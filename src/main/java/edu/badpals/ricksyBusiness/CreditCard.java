@@ -18,16 +18,29 @@ public class CreditCard {
         return this.number;
     }
 
+    public float credit() {
+        return credit;
+    }
+
+    public boolean pay(double price) {
+        if (credit > price) {
+            credit -= price;
+        } else {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return new StringBuilder("owner: ")
                 .append(this.owner)
                 .append("\n")
                 .append("number: ")
-                .append(this.number)
+                .append(number())
                 .append("\n")
                 .append("credit: ")
-                .append(this.credit)
+                .append(credit())
                 .append(SYMBOL)
                 .append("\n")
                 .toString();
