@@ -3,7 +3,7 @@ package edu.badpals.ricksyBusiness;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UfosPark {
+public class UfosPark implements GuestDispatcher {
 
     private static double FEE = 500f;
     private HashMap<String, String> flota = new HashMap<>();
@@ -17,6 +17,7 @@ public class UfosPark {
         this.flota.put(ovni, "Libre");
     }
 
+    @Override
     public void dispatch(CreditCard card) {
         if (getUfoOf(card.number()).equals("null") && card.credit() >= UfosPark.FEE) {
             if (!getFreeOvni().equals("No hay ovnis libres")){
