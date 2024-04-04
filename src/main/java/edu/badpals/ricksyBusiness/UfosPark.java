@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class UfosPark {
 
-    /* private x fee;*/
+    private static double FEE = 500f;
     private HashMap<String, String> flota = new HashMap<>();
 
 
@@ -19,6 +19,7 @@ public class UfosPark {
 
     public void dispatch(CreditCard card) {
         flota.replace(getFreeOvni(), card.number());
+        card.pay(UfosPark.FEE);
     }
 
     private String getFreeOvni() {
@@ -31,6 +32,11 @@ public class UfosPark {
     }
 
     public String getUfoOf(String numberOwner){
-
+        for (HashMap.Entry<String, String> ovni : flota.entrySet()) {
+            if (numberOwner.equals(ovni.getValue())) {
+                return ovni.getKey();
+            }
+        }
+        return null;
     }
 }
