@@ -14,21 +14,26 @@ public class UfosPark {
 
 
     public void add (String ovni) {
-        this.flota.put(ovni, null);
+        this.flota.put(ovni, "Libre");
     }
 
     public void dispatch(CreditCard card) {
-        flota.replace(getFreeOvni(), card.number());
-        card.pay(UfosPark.FEE);
+        if (getUfoOf(card.number()).equals("null") && card.credit() >= UfosPark.FEE) {
+            if (!getFreeOvni().equals("No hay ovnis libres")){
+                flota.replace(getFreeOvni(), card.number());
+                card.pay(UfosPark.FEE);
+            }
+        }
     }
+
 
     private String getFreeOvni() {
         for (HashMap.Entry<String, String> ovni : flota.entrySet()) {
-            if (ovni.getValue() == null) {
+            if (ovni.getValue() == "Libre") {
                 return ovni.getKey();
             }
         }
-        return null;
+        return "No hay ovnis libres";
     }
 
     public String getUfoOf(String numberOwner){
@@ -37,6 +42,11 @@ public class UfosPark {
                 return ovni.getKey();
             }
         }
-        return null;
+        return "null";
+    }
+
+    @Override
+    public String toString() {
+        return flota.keySet().toString();
     }
 }
