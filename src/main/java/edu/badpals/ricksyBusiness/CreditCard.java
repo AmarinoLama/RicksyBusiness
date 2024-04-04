@@ -14,6 +14,10 @@ public class CreditCard {
         this.number = number;
     }
 
+    public String number() {
+        return this.number;
+    }
+
     @Override
     public String toString() {
         return new StringBuilder("owner: ")
