@@ -23,7 +23,7 @@ public class CreditCard {
     }
 
     public boolean pay(double price) {
-        if (credit > price) {
+        if (credit >= price) {
             credit -= price;
         } else {
             return false;
