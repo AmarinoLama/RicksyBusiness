@@ -1,5 +1,9 @@
 package edu.badpals.ricksyBusiness;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Ricksy Business
  * ===============
@@ -165,9 +169,11 @@ public class RicksyBusiness {
          */
 
 
+
         Receptivo receptivo = new Receptivo();
         receptivo.registra(packExpender);
         receptivo.registra(ufosPark);
+
 
         // Implementa el metodo receptivo.dispatch()
         // para que invoque a UfosPark.dispatch()
@@ -178,7 +184,78 @@ public class RicksyBusiness {
         System.out.println("\nLLega Squanchy!\n" +
                 "===============");
         receptivo.dispatch(squanchy);
+        mostrarReserva(squanchy, packExpender, ufosPark);
 
 
+        // Gearhead reserva ovni y pack.
+        // No tiene crédito.
+
+        System.out.println("\nLLega GearHead!\n" +
+                "===============");
+        gearHead.pay(3000); // no tiene crédito
+        receptivo.dispatch(gearHead);
+        mostrarReserva(gearHead, packExpender, ufosPark);
+
+        // Birdpearson es recibido en la fiesta
+
+        System.out.println("\nLLega Birdpearson!\n" +
+                "==================");
+        CreditCard birdpearson = new CreditCard("Birdpearson", "1111111111111111");
+        receptivo.dispatch(birdpearson);
+        mostrarReserva(birdpearson, packExpender, ufosPark);
+
+        // Morty intenta reserver un ovni y un pack pero no quedan
+
+        System.out.println("\nMorty quiere pack y ovni pero no quedan :(\n" +
+                "==========================================");
+        morty = new CreditCard("Morty", "0000000000000000");
+        receptivo.dispatch(morty);
+        mostrarReserva(morty, packExpender, ufosPark);
+
+
+        /**
+         * A por el 10!!
+         * Wubba lubba dub dub!!
+         *
+         * Añade otra tarea al receptivo,
+         * de modo que 5 invitados:
+         * abradolph, squanchy, morty, gearHead, birdpearson
+         * encarguen un RickMenú junto
+         * al ovni y al pack de bienvenida.
+         * Hay 100 RickMenús y su precio es de 10 EZIs.
+         * Muestra el total de pedidos y la lista de
+         * invitados/as que han hecho un pedido.
+         */
+
+        RickMenu rickMenu = new RickMenu(100, 10);
+        receptivo.registra(rickMenu);
+
+        /* hice la compra desde la propia clase para no modificar la salida de los datos */
+
+        rickMenu.dispatch(squanchy);
+        rickMenu.dispatch(abradolph);
+        rickMenu.dispatch(morty);
+        rickMenu.dispatch(birdpearson);
+        rickMenu.dispatch(gearHead);
+
+        System.out.println("\nPedidos de RickMenus:");
+        System.out.println("=========================");
+        System.out.println("stock: " + rickMenu.stock());
+        System.out.println(rickMenu.getCompradores());
+
+        System.out.println("\nCreditos de los invitados/as:");
+        System.out.println("=========================");
+
+        System.out.println(abradolph);
+        System.out.println(squanchy);
+        System.out.println(morty);
+        System.out.println(gearHead);
+        System.out.println(birdpearson);
+    }
+
+    private static void mostrarReserva(CreditCard card, CrystalExpender expender, UfosPark ufos) {
+        System.out.println(card);
+        System.out.println("Packs: " + expender.stock());
+        System.out.println("Ovni: " + ufos.getUfoOf(card.number()));
     }
 }
