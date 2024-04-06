@@ -9,6 +9,7 @@ public class Receptivo {
     public Receptivo() {
     }
 
+
     public void registra(GuestDispatcher observer){
         observers.add(observer);
     }
