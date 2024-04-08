@@ -1,6 +1,7 @@
 package edu.badpals.ricksyBusiness;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class UfosPark implements GuestDispatcher {
@@ -49,5 +50,15 @@ public class UfosPark implements GuestDispatcher {
     @Override
     public String toString() {
         return flota.keySet().toString();
+    }
+
+    /* paquetes añadidos para pasar los casos test */
+
+    boolean containsCard(String cardNumber) {
+        return this.flota.containsValue(cardNumber);
+    }
+
+    Collection<String> cardNumbers() {
+        return this.flota.values();
     }
 }
