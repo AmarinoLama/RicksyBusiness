@@ -1,3 +1,5 @@
+Kata propuesto por [@dfleta](https://github.com/dfleta) para aprender a utilizar diccionarios y sus funciones básicas.
+
 Ricksy Business by [Dfleta](https://github.com/dfleta)
 ===============
 
@@ -40,13 +42,13 @@ Intenta que la salida del programa sea lo más parecida posible a las imágenes 
 
 Intenta que la salida del programa sea lo más parecida posible a las imágenes que se proporcionan.
 
-!["Historias de usuario"](./doc/Salida_consola_01.png)
+!["Historias de usuario"]
 
-!["Historias de usuario"](./doc/Salida_consola_02.png)
+!["Historias de usuario"]
 
-!["Historias de usuario"](./doc/Salida_consola_03.png)
+!["Historias de usuario"]
 
-!["Historias de usuario"](./doc/Salida_consola_04.png)
+!["Historias de usuario"]
 
 
 ## Historias de usuario /casos de uso
